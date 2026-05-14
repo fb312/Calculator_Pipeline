@@ -3,23 +3,19 @@ pipeline {
 
     stages {
 
-        stage('Clone Code') {
+        stage('Build') {
             steps {
-                echo 'Cloning repository...'
-            }
-        }
-
-        stage('Compile') {
-            steps {
-                echo 'Compiling Java program...'
-                sh 'javac CalculatorMain.java'
+                dir('calculator') {
+                    bat 'mvn clean compile'
+                }
             }
         }
 
         stage('Run') {
             steps {
-                echo 'Running Java program...'
-                sh 'java CalculatorMain'
+                dir('calculator') {
+                    bat 'mvn exec:java -Dexec.mainClass=calculator.CalculatorMain'
+                }
             }
         }
     }
