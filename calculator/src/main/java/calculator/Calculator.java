@@ -14,10 +14,4 @@ public class Calculator {
         System.out.println("Subtract : " + result);
         return result;
     }
-    public int mul(int a, int b)
-    {
-        int result = a * b;
-        System.out.println("Multiply : " + result);
-        return result;
-    }
 }
